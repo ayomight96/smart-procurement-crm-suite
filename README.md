@@ -101,12 +101,14 @@ Then open [http://localhost:4200](http://localhost:4200) in your browser.
 
 <img src="screenshots/batch-comparison.png" alt="Batch Comparison View" width="600"/>
 
+<img src="screenshots/batch-comparison-2.png" alt="Batch Comparison Feature Contributions View" width="600"/>
+
 ---
 
 ## 🧑‍💻 Author
 
 Built by **Ayomide Adekoya**  
-[View on GitHub](https://github.com/your-username/smart-procurement)
+[View on GitHub](https://github.com/ayomight96/smart-procurement-crm-suite)
 
 ---
 
