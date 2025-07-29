@@ -1,4 +1,4 @@
-<div class="space-y-6">
+<div class="space-y-6 mt-6">
   <!-- Generate Button -->
   <div class="text-right">
     <button
@@ -9,11 +9,8 @@
     </button>
   </div>
 
-  <!-- Bid Summary Card -->
-  <div
-    *ngIf="lastBid"
-    class="bg-gray-50 p-4 border rounded text-sm text-gray-700"
-  >
+  <!-- Bid Summary -->
+  <div *ngIf="lastBid" class="bg-gray-50 p-4 border rounded text-sm text-gray-700">
     <h3 class="font-medium text-gray-800 mb-2">Latest Bid Submitted</h3>
     <ul class="list-disc ml-5 space-y-1">
       <li><strong>Supplier:</strong> {{ lastBid.supplierName }}</li>
@@ -24,10 +21,8 @@
     </ul>
   </div>
 
-  <!-- Prediction Result Card -->
+  <!-- Prediction Result -->
   <div *ngIf="predictionResult">
-    <app-supplier-result-card
-      [result]="predictionResult"
-    ></app-supplier-result-card>
+    <app-supplier-result-card [result]="predictionResult"></app-supplier-result-card>
   </div>
 </div>

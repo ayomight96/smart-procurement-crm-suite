@@ -7,7 +7,7 @@ import { PredictionResult, SupplierComparisonResponse, SupplierFeatures, Supplie
   providedIn: 'root',
 })
 export class ProcurementApiService {
-  private readonly apiUrl = 'http://localhost:5053'; // change if different
+  private readonly apiUrl = 'http://localhost:5001'; // change if different
 
   constructor(private http: HttpClient) {}
 

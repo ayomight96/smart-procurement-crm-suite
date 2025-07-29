@@ -1,5 +1,6 @@
-<div class="max-w-4xl mx-auto px-6 mt-6 mb-2">
-  <div class="flex justify-start">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-20">
+  <!-- Back Button -->
+  <div class="sticky top-0 z-50 bg-white pt-4 pb-2">
     <a
       routerLink="/smart-procurement"
       class="inline-flex items-center gap-2 bg-white border border-blue-200 text-blue-600 hover:bg-blue-50 font-medium px-4 py-2 rounded-full shadow-sm transition"
@@ -8,42 +9,43 @@
       <span class="text-sm">Back to Home</span>
     </a>
   </div>
-</div>
-<!-- Tab Buttons -->
-<div class="flex justify-center gap-8 mt-6 mb-6">
-  <button
-    class="relative pb-3 text-base font-medium transition-colors"
-    [ngClass]="{
-      'text-blue-600': activeTabIndex === 0,
-      'text-gray-600 hover:text-blue-600': activeTabIndex !== 0
-    }"
-    (click)="activeTabIndex = 0"
-  >
-    🎯 Single Bid Prediction
-    <span
-      *ngIf="activeTabIndex === 0"
-      class="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-t"
-    ></span>
-  </button>
 
-  <button
-    class="relative pb-3 text-base font-medium transition-colors"
-    [ngClass]="{
-      'text-blue-600': activeTabIndex === 1,
-      'text-gray-600 hover:text-blue-600': activeTabIndex !== 1
-    }"
-    (click)="activeTabIndex = 1"
-  >
-    📊 Batch Bid Comparison
-    <span
-      *ngIf="activeTabIndex === 1"
-      class="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-t"
-    ></span>
-  </button>
-</div>
+  <!-- Tabs -->
+  <div class="flex justify-center gap-8 mt-6 mb-6">
+    <!-- Single Bid Tab -->
+    <button
+      class="relative pb-3 text-base font-medium transition-colors"
+      [ngClass]="{
+        'text-blue-600': activeTabIndex === 0,
+        'text-gray-600 hover:text-blue-600': activeTabIndex !== 0
+      }"
+      (click)="activeTabIndex = 0"
+    >
+      🎯 Single Bid Prediction
+      <span
+        *ngIf="activeTabIndex === 0"
+        class="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-t"
+      ></span>
+    </button>
 
-<!-- Custom Panel Switcher -->
-<div class="max-w-4xl mx-auto px-4">
+    <!-- Batch Bid Tab -->
+    <button
+      class="relative pb-3 text-base font-medium transition-colors"
+      [ngClass]="{
+        'text-blue-600': activeTabIndex === 1,
+        'text-gray-600 hover:text-blue-600': activeTabIndex !== 1
+      }"
+      (click)="activeTabIndex = 1"
+    >
+      📊 Batch Bid Comparison
+      <span
+        *ngIf="activeTabIndex === 1"
+        class="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-t"
+      ></span>
+    </button>
+  </div>
+
+  <!-- Panel Switch -->
   <ng-container [ngSwitch]="activeTabIndex">
     <app-single-bid-panel
       *ngSwitchCase="0"
