@@ -96,14 +96,15 @@ Then open [http://localhost:4200](http://localhost:4200) in your browser.
 ---
 
 ## 📘 Example Screens
-Prediction View:
-<img src="screenshots/prediction-view.png" alt="Prediction View" width="600"/>
 
-Batch Comparison View:
-<img src="screenshots/batch-comparison.png" alt="Batch Comparison View" width="600"/>
+**Prediction View**  
+![Prediction View](screenshots/prediction-view.png)
 
-Batch Comparison Feature Contributions View:
-<img src="screenshots/batch-comparison-2.png" alt="Batch Comparison Feature Contributions View" width="600"/>
+**Batch Comparison View**  
+![Batch Comparison View](screenshots/batch-comparison.png)
+
+**Batch Comparison Feature Contributions View**  
+![Batch Comparison Feature Contributions View](screenshots/batch-comparison-2.png)
 
 ---
 
