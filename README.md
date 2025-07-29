@@ -97,13 +97,13 @@ Then open [http://localhost:4200](http://localhost:4200) in your browser.
 
 ## 📘 Example Screens
 
-**Prediction View**  
+**Prediction View:**  
 ![Prediction View](screenshots/prediction-view.png)
 
-**Batch Comparison View**  
+**Batch Comparison View:**  
 ![Batch Comparison View](screenshots/batch-comparison.png)
 
-**Batch Comparison Feature Contributions View**  
+**Batch Comparison Feature Contributions View:**  
 ![Batch Comparison Feature Contributions View](screenshots/batch-comparison-2.png)
 
 ---
