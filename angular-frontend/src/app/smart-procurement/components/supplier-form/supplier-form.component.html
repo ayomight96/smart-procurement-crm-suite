@@ -1,0 +1,97 @@
+<form [formGroup]="supplierForm" (ngSubmit)="submitForm()" class="space-y-6 bg-white p-6 rounded-xl shadow border border-gray-200">
+
+  <h2 class="text-2xl font-semibold text-gray-800">Supplier Features</h2>
+
+  <!-- supplierName -->
+  <div>
+    <label for="supplierName" class="block text-sm font-medium text-gray-700">Supplier Name</label>
+    <input
+      type="text"
+      id="supplierName"
+      formControlName="supplierName"
+      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+      placeholder="e.g. Acme Corp"
+    />
+    <div *ngIf="supplierForm.get('supplierName')?.invalid && supplierForm.get('supplierName')?.touched" class="text-red-500 text-sm mt-1">
+      Required
+    </div>
+  </div>
+
+  <!-- averageUnitPrice -->
+  <div>
+    <label for="averageUnitPrice" class="block text-sm font-medium text-gray-700">Average Unit Price</label>
+    <input
+      type="number"
+      step="0.01"
+      id="averageUnitPrice"
+      formControlName="averageUnitPrice"
+      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+      placeholder="e.g. 12.5"
+    />
+    <div *ngIf="supplierForm.get('averageUnitPrice')?.invalid && supplierForm.get('averageUnitPrice')?.touched" class="text-red-500 text-sm mt-1">
+      Required
+    </div>
+  </div>
+
+  <!-- averageDeliveryDays -->
+  <div>
+    <label for="averageDeliveryDays" class="block text-sm font-medium text-gray-700">Average Delivery Days</label>
+    <input
+      type="number"
+      id="averageDeliveryDays"
+      formControlName="averageDeliveryDays"
+      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+      placeholder="e.g. 5"
+    />
+    <div *ngIf="supplierForm.get('averageDeliveryDays')?.invalid && supplierForm.get('averageDeliveryDays')?.touched" class="text-red-500 text-sm mt-1">
+      Required
+    </div>
+  </div>
+
+  <!-- rating -->
+  <div>
+    <label for="rating" class="block text-sm font-medium text-gray-700">Rating (out of 5)</label>
+    <input
+      type="number"
+      step="0.1"
+      min="0"
+      max="5"
+      id="rating"
+      formControlName="rating"
+      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+      placeholder="e.g. 4.2"
+    />
+    <div *ngIf="supplierForm.get('rating')?.invalid && supplierForm.get('rating')?.touched" class="text-red-500 text-sm mt-1">
+      Required
+    </div>
+  </div>
+
+  <!-- defectRate -->
+  <div>
+    <label for="defectRate" class="block text-sm font-medium text-gray-700">Defect Rate (%)</label>
+    <input
+      type="number"
+      step="0.01"
+      min="0"
+      max="100"
+      id="defectRate"
+      formControlName="defectRate"
+      class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+      placeholder="e.g. 2.5"
+    />
+    <div *ngIf="supplierForm.get('defectRate')?.invalid && supplierForm.get('defectRate')?.touched" class="text-red-500 text-sm mt-1">
+      Required
+    </div>
+  </div>
+
+  <!-- submit -->
+  <div class="pt-4">
+    <button
+      type="submit"
+      [disabled]="supplierForm.invalid"
+      class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none rounded-md transition"
+    >
+      Predict Best Supplier
+    </button>
+  </div>
+</form>

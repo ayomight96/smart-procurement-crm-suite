@@ -1,0 +1,102 @@
+<p-dialog
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '650px' }"
+  [dismissableMask]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [showHeader]="false"
+  appendTo="body"
+  [baseZIndex]="12000"
+  styleClass="comparison-modal"
+>
+  <!-- Internal close button -->
+  <div class="flex justify-between items-start mb-4">
+    <h1 class="text-lg font-semibold text-center w-full">📊 Bid Comparison</h1>
+    <button
+      type="button"
+      class="text-gray-400 hover:text-gray-600 transition"
+      (click)="close.emit()"
+      aria-label="Close"
+    >
+      <i class="pi pi-times text-xl"></i>
+    </button>
+  </div>
+
+  <div class="space-y-6">
+    <!-- Info grid remains unchanged -->
+    <div
+      class="grid grid-cols-3 gap-4 text-sm text-gray-700 font-medium text-center"
+    >
+      <!-- Supplier Names -->
+      <div>{{ left.supplierName }}</div>
+      <div></div>
+      <div>{{ right.supplierName }}</div>
+
+      <!-- Confidence -->
+      <div [ngClass]="confidenceClass(left.confidenceLevel)">
+        {{ left.confidenceLevel }}
+      </div>
+      <div class="text-gray-500 flex items-center justify-center">
+        Confidence
+        <i
+          class="pi pi-info-circle text-gray-400 ml-1"
+          pTooltip="How sure the model is about its recommendation"
+        ></i>
+      </div>
+      <div [ngClass]="confidenceClass(right.confidenceLevel)">
+        {{ right.confidenceLevel }}
+      </div>
+
+      <!-- Score -->
+      <div>{{ left.probability | percent : "1.1-2" }}</div>
+      <div class="text-gray-500 flex items-center justify-center">
+        Score
+        <i
+          class="pi pi-info-circle text-gray-400 ml-1"
+          pTooltip="The model's numeric likelihood the bid is optimal"
+        ></i>
+      </div>
+      <div>{{ right.probability | percent : "1.1-2" }}</div>
+
+      <!-- Outcome -->
+      <div [ngClass]="left.selected ? 'text-green-700' : 'text-red-700'">
+        {{ left.selected ? "Recommended" : "Not Recommended" }}
+      </div>
+      <div class="text-gray-500 flex items-center justify-center">
+        Outcome
+        <i
+          class="pi pi-info-circle text-gray-400 ml-1"
+          pTooltip="Final decision: recommend or not"
+        ></i>
+      </div>
+      <div [ngClass]="right.selected ? 'text-green-700' : 'text-red-700'">
+        {{ right.selected ? "Recommended" : "Not Recommended" }}
+      </div>
+    </div>
+
+    <hr class="border-gray-200" />
+
+    <!-- Chart Section -->
+    <div>
+      <h4 class="text-lg font-semibold text-gray-700 mb-2">
+        🔍 Feature Contributions
+      </h4>
+      <p-chart
+        type="bar"
+        [data]="chartData"
+        [options]="chartOptions"
+        styleClass="w-full h-64"
+      ></p-chart>
+    </div>
+  </div>
+  <!-- Footer -->
+  <div class="mt-6 flex justify-end">
+    <button
+      class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition"
+      (click)="close.emit()"
+    >
+      Close
+    </button>
+  </div>
+</p-dialog>

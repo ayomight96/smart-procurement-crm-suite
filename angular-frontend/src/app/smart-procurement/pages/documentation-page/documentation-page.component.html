@@ -1,0 +1,119 @@
+<div class="max-w-4xl mx-auto px-6 mt-6 mb-2">
+  <div class="flex justify-start">
+    <a
+      routerLink="/smart-procurement"
+      class="inline-flex items-center gap-2 bg-white border border-blue-200 text-blue-600 hover:bg-blue-50 font-medium px-4 py-2 rounded-full shadow-sm transition"
+    >
+      <i class="pi pi-arrow-left text-sm"></i>
+      <span class="text-sm">Back to Home</span>
+    </a>
+  </div>
+</div>
+<div class="max-w-4xl mx-auto px-6 py-12 space-y-10 text-gray-800">
+  <!-- Title -->
+  <h1 class="text-3xl font-bold text-center text-blue-700">
+    📘 Methodology & Validation
+  </h1>
+
+  <!-- Model Section -->
+  <section>
+    <h2 class="text-xl font-semibold mb-2">🤖 Model Overview</h2>
+    <p class="text-gray-700 text-base leading-relaxed">
+      The Smart Procurement Assistant uses an
+      <strong>Explainable Boosting Machine (EBM)</strong> model from the
+      <code>interpret</code> library, wrapped in a
+      <strong>CalibratedClassifierCV</strong> to improve probability estimates.
+      It predicts whether a supplier's bid is optimal based on procurement KPIs
+      and outputs explainable logit contributions per feature.
+    </p>
+  </section>
+
+  <!-- Feature Engineering -->
+  <section>
+    <h2 class="text-xl font-semibold mb-2">🔧 Features Used</h2>
+    <ul class="list-disc ml-5 space-y-1 text-gray-700">
+      <li><strong>Average Unit Price</strong> — lower is better</li>
+      <li><strong>Average Delivery Days</strong> — shorter times preferred</li>
+      <li><strong>Rating</strong> — customer satisfaction score (1–5 stars)</li>
+      <li>
+        <strong>Defect Rate</strong> — percentage of returned or faulty items
+        (lower is better)
+      </li>
+    </ul>
+  </section>
+
+  <!-- Dataset -->
+  <section>
+    <h2 class="text-xl font-semibold mb-2">📁 Dataset</h2>
+    <p class="text-gray-700 text-base">
+      The model was trained on a custom synthetic dataset simulating supplier
+      bid behavior and outcomes. The dataset reflects real-world procurement
+      dynamics with stratified splits to ensure balance.
+    </p>
+  </section>
+
+  <!-- Validation -->
+  <section>
+    <h2 class="text-xl font-semibold mb-2">🧪 Validation</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="bg-white border rounded-lg shadow-sm p-4">
+        <h3 class="text-sm text-gray-500">Accuracy</h3>
+        <p class="text-xl font-bold text-green-700">92.4%</p>
+      </div>
+      <div class="bg-white border rounded-lg shadow-sm p-4">
+        <h3 class="text-sm text-gray-500">Log Loss</h3>
+        <p class="text-xl font-bold text-red-600">0.216</p>
+      </div>
+    </div>
+    <p class="text-sm text-gray-500 mt-2">
+      Based on a train/calibrate/test split with balanced sampling and
+      stratification. Calibration improves confidence score alignment.
+    </p>
+  </section>
+
+  <!-- Explainability -->
+  <section>
+    <h2 class="text-xl font-semibold mb-2">🔍 Explainability</h2>
+    <p class="text-gray-700 text-base">
+      Predictions include per-feature
+      <strong>logit contributions</strong> extracted directly from the EBM
+      model. Each decision is broken down by how much each feature pushed the
+      model toward a recommendation or rejection. Probabilities are shown from
+      both <code>predict_proba</code> and from raw logit sums for full
+      transparency.
+    </p>
+  </section>
+
+  <!-- API Architecture -->
+  <section>
+    <h2 class="text-xl font-semibold mb-2">🌐 Architecture & API</h2>
+    <ul class="list-disc ml-5 space-y-1 text-gray-700">
+      <li>
+        🔹 Python <strong>FastAPI</strong> microservice handles all AI
+        prediction logic.
+      </li>
+      <li>
+        🔹 <code>/predict</code>: Single supplier bid prediction with breakdown.
+      </li>
+      <li>
+        🔹 <code>/bulk-predict</code>: Batch processing for bid comparisons.
+      </li>
+      <li>
+        🔹 Served via an <strong>ASP.NET Core</strong> backend with Angular
+        frontend.
+      </li>
+    </ul>
+  </section>
+
+  <!-- Authorship -->
+  <section>
+    <h2 class="text-xl font-semibold mb-2">📚 Author & Version</h2>
+    <p class="text-gray-700 text-sm">
+      Built by Ayomide Adekoya • v1.0.0 • July 2025
+      <br />
+      <a href="https://github.com/..." class="text-blue-600 underline"
+        >View on GitHub</a
+      >
+    </p>
+  </section>
+</div>

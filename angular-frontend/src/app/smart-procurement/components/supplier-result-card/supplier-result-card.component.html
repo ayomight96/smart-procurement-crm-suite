@@ -1,0 +1,106 @@
+<div
+  class="bg-white shadow-xl rounded-2xl p-6 border border-gray-100 space-y-6 transition hover:shadow-2xl"
+>
+  <!-- Header with Status -->
+  <div class="flex items-center justify-between">
+    <h2 class="text-2xl font-bold text-gray-800 flex items-center space-x-2">
+      <i class="pi pi-chart-line text-blue-500"></i>
+      <span>Prediction Result</span>
+      <button
+        class="ml-2 text-sm text-blue-500 hover:text-blue-700"
+        (click)="showInfo = true"
+        title="How prediction works"
+      >
+        <i class="pi pi-info-circle"></i>
+      </button>
+    </h2>
+    <span
+      class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold shadow-sm transition"
+      [ngClass]="{
+        'bg-green-100 text-green-700': result.selected,
+        'bg-red-100 text-red-700': !result.selected
+      }"
+    >
+      <i
+        class="pi"
+        [ngClass]="{
+          'pi-check-circle mr-1': result.selected,
+          'pi-times-circle mr-1': !result.selected
+        }"
+      ></i>
+      {{ result.selected ? "Recommended" : "Not Recommended" }}
+    </span>
+  </div>
+
+  <hr class="border-gray-200" />
+
+  <!-- Confidence Level -->
+  <div class="flex items-center space-x-3 text-base">
+    <i class="pi pi-shield text-gray-400"></i>
+    <span class="text-gray-600 font-medium">Confidence Level:</span>
+
+    <span
+      class="px-2 py-1 rounded text-sm font-bold tracking-wide cursor-pointer transition-colors"
+      [ngClass]="{
+        'bg-green-100 text-green-800': result.confidenceLevel === 'Very High',
+        'bg-blue-100 text-blue-800': result.confidenceLevel === 'High',
+        'bg-yellow-100 text-yellow-800': result.confidenceLevel === 'Medium',
+        'bg-red-100 text-red-800': result.confidenceLevel === 'Low'
+      }"
+      pTooltip="Raw probability: {{ result.probability | percent : '1.1-2' }}"
+      tooltipPosition="top"
+    >
+      {{ result.confidenceLevel }}
+    </span>
+  </div>
+
+  <hr class="border-gray-200" />
+
+  <!-- Chart -->
+  <div>
+    <h3
+      class="text-lg font-semibold text-gray-700 mb-2 flex items-center space-x-2"
+    >
+      <i class="pi pi-sliders-h text-purple-400"></i>
+      <span>Feature Contributions</span>
+    </h3>
+    <p-chart
+      type="bar"
+      [data]="chartData"
+      [options]="chartOptions"
+      styleClass="w-full"
+    ></p-chart>
+  </div>
+</div>
+<p-dialog
+  header="How Prediction Works"
+  [(visible)]="showInfo"
+  [modal]="true"
+  [style]="{ width: '500px' }"
+  [closable]="true"
+  [dismissableMask]="true"
+  [draggable]="false"
+  [resizable]="false"
+  appendTo="body"
+  [baseZIndex]="11000"
+  styleClass="custom-modal"
+>
+  <div class="text-gray-800 text-base leading-6 space-y-3">
+    <p>The model evaluates each supplier based on:</p>
+    <ul class="list-disc ml-5 text-sm text-gray-700 space-y-1">
+      <li><strong>Price</strong> – Lower cost gets higher preference.</li>
+      <li><strong>Delivery Time</strong> – Faster suppliers are preferred.</li>
+      <li>
+        <strong>Rating</strong> – Higher ratings improve recommendation
+        likelihood.
+      </li>
+      <li>
+        <strong>Defect Rate</strong> – Fewer defects improve trust in supplier.
+      </li>
+    </ul>
+    <p class="text-sm italic text-gray-500">
+      These factors are combined using an AI model that outputs a confidence
+      level.
+    </p>
+  </div>
+</p-dialog>

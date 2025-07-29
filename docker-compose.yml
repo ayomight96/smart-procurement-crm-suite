@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  fastapi:
+    build:
+      context: ./fastapi-ml
+    container_name: fastapi-ml
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./fastapi-ml:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - app-network
+
+  aspnet:
+    build:
+      context: ./aspnet-backend
+    container_name: aspnet-api
+    ports:
+      - "5000:80"
+    depends_on:
+      - fastapi
+    environment:
+      - ML_API_URL=http://fastapi:8000
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

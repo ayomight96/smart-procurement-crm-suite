@@ -1,0 +1,5 @@
+
+# Ignore test project outputs
+**/PublishedDependencies/
+/bin
+/obj

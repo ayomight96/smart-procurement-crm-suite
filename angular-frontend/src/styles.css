@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "primeicons/primeicons.css";
+
+/* Dialog + Animation */
+body .p-dialog-mask.p-component-overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: none !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.p-dialog.custom-blur {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+body .p-dialog.custom-modal {
+  background-color: #ffffff !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  opacity: 1 !important;
+  padding: 1.5rem;
+}
+
+.comparison-modal .p-dialog-content {
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-radius: 1rem;
+}

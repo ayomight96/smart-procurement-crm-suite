@@ -1,0 +1,25 @@
+# Node
+node_modules/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+
+# ASP.NET Core
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Others
+.env

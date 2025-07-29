@@ -1,0 +1,46 @@
+<div class="bg-white rounded-xl p-4 shadow space-y-4">
+  <h3 class="text-lg font-semibold text-gray-800">🧠 Smart Bid Evaluator</h3>
+
+  <div *ngFor="let bid of results; trackBy: trackByFn"
+       class="p-3 border rounded flex justify-between items-center space-x-3">
+
+    <input
+      type="checkbox"
+      [checked]="selected.includes(bid)"
+      (change)="toggleSelection(bid)"
+      [disabled]="selected.length === 2 && !selected.includes(bid)"
+      class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+    />
+
+    <div class="flex-grow">
+      <p class="font-medium text-gray-700">{{ bid.supplierName }}</p>
+      <p class="text-sm text-gray-500">
+        Confidence:
+        <span [ngClass]="{
+          'text-green-600': bid.confidenceLevel === 'Very High',
+          'text-blue-600': bid.confidenceLevel === 'High',
+          'text-yellow-600': bid.confidenceLevel === 'Medium',
+          'text-red-600': bid.confidenceLevel === 'Low'
+        }">
+          {{ bid.confidenceLevel }}
+        </span>
+      </p>
+    </div>
+
+    <span [ngClass]="{
+      'bg-green-100 text-green-800': bid.selected,
+      'bg-red-100 text-red-800': !bid.selected
+    }" class="px-3 py-1 rounded-full text-sm font-semibold">
+      {{ bid.selected ? 'Recommended' : 'Not Recommended' }}
+    </span>
+  </div>
+
+  <div *ngIf="selected.length === 2" class="text-right pt-3">
+    <button
+      (click)="compareSelected.emit(selected)"
+      class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+    >
+      Compare Selected
+    </button>
+  </div>
+</div>
