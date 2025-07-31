@@ -22,12 +22,18 @@ An explainable AI-powered tool to evaluate and compare supplier bids based on ke
 
 ```
 smart-procurement/
-├── aspnet-backend/       # ASP.NET Core API (talks to ML service)
-├── fastapi-ml/           # Python FastAPI service with ML model
-├── angular-frontend/     # Angular UI (not containerized)
-├── docker-compose.yml    # Compose file for backend services
-└── README.md             # This file
+├── aspnet-backend/ProcurementAPI       # ASP.NET Core API (talks to ML service)
+├── fastapi-ml/                         # Python FastAPI service with ML model
+├── angular-frontend/                   # Angular UI (not containerized)
+├── docker-compose.yml                  # Compose file for backend services
+└── README.md                           # This file
 ```
+
+---
+
+## 🧱 System Architecture
+
+![Prediction View](screenshots/system_architecture.png)
 
 ---
 
